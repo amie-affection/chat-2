@@ -48,19 +48,18 @@ import axios from 'axios';
 
 // export { createMessage, getMessage, editMessage, deleteMessage };
 
-const convertData = (data) => {
-    //   console.log(data);
-    const result = [];
-    for (const elementId in data) {
-        // console.log(element);
-        // console.log(data[element]);
-        result.push({ id: elementId, ...data[elementId] });
-    }
-    return result;
+const convertData = data => {
+  //   console.log(data);
+  const result = [];
+  for (const elementId in data) {
+    // console.log(element);
+    // console.log(data[element]);
+    result.push({ id: elementId, ...data[elementId] });
+  }
+  return result;
 };
-    
-export const apiServices = {
 
+export const apiServices = {
   createMessage(content) {
     try {
       return axios.post(
@@ -86,7 +85,7 @@ export const apiServices = {
   editMessage(id, content) {
     axios.patch(
       `https://project-chat-79c90.firebaseio.com/messenger/${id}.json`,
-      { content },
+      content,
     );
   },
 
