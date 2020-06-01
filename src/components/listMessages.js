@@ -1,18 +1,18 @@
-import axios from 'axios';
 import { apiServices } from '../services';
 import { messenger } from '../data';
 
 const listMessages = document.querySelector('.listMessages');
-const innerItem = message => {
+const innerItem = (message, picture) => {
   return `<span class='listMessagesItemText'>${message}</span>
+  ${picture ? `<img src="${picture}"/>` : ''}
       <button class='edit' data-action='edit'>Edit</button>
       <button class='delete' data-action='delete'>Delete</button>`;
 };
 
-const createItem = ({ message, id }) => {
+const createItem = ({ message, id, picture = '' }) => {
   return `
       <li data-id='${id}'>
-      ${innerItem(message)}
+      ${innerItem(message, picture)}
       </li>
       `;
 };
